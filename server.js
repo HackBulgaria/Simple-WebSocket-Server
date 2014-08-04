@@ -170,6 +170,19 @@ app.get("/games", function(req, res) {
   res.json(gameIdToPlayers);
 });
 
+app.get("/games2", function(req,res) {
+  var games = [];
+
+  Object.keys(gameIdToPlayers).forEach(function(gameId) {
+    games.push({
+      gameId: gameId,
+      players: gameIdToPlayers[gameId]
+    });
+  });
+
+  res.json(games);
+});
+
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
